@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Page Visibility API</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+var visibilityChange = (function (window) {
+var inView = false;
+return function (fn) {
+	window.onfocus = window.onblur = window.onpageshow = window.onpagehide = function (e) {
+		if ({focus:1, pageshow:1}[e.type]) {
+			if (inView) return;
+			fn("visible");
+			inView = true;
+		} else if (inView) {
+			fn("hidden");
+			inView = false;
+		}
+	};
+};
+}(this));
+visibilityChange(function (state) {
+var d = new Date();
+var n = d.toLocaleTimeString();
+document.getElementById("textoutput").innerHTML= n +': Page is ' + state + '<br />'+ document.getElementById("textoutput").innerHTML;
+if (state=="hidden")
+{
+	$("#message").fadeIn();
+	document.title = "Come Back!";
+}
+if (state=="visible")
+{
+	$("#message").fadeOut(2000);
+	document.title = "Page Visibility API";
+}
+});
+</script>
+<style>
+#message {
+	display: none;
+}
+</style>
+</head>
+<body>	
+	<h1>Page Visibility API</h1>
+	<div id="message"><h2>You’ve been away, haven’t you!</h2></div>
+	<div id="textoutput"></div>
+</body>
+</html>
