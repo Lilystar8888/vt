@@ -1,0 +1,116 @@
+a {
+  color: #1a0dab;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+.gb_ed {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.gb_ed {
+  padding: 4px;
+}
+
+gb_ed:first-child,
+#gbsfw:first-child + .gb_ed {
+  padding-left: 4px;
+}
+
+.gb_wf {
+  position: relative;
+}
+
+.gb_A {
+  display: inline-block;
+  outline: none;
+  vertical-align: middle;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.gb_A {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.gb_na a,
+.gb_Dc a {
+  color: inherit;
+}
+
+.gb_z .gb_A,
+.gb_B .gb_z .gb_A {
+  background-position: -64px -29px;
+}
+
+.gb_z .gb_A,
+.gb_z .gb_A:hover,
+.gb_z .gb_A:focus {
+  opacity: 1;
+}
+
+#gb#gb a.gb_A {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.gb_na svg {
+  fill: currentColor;
+}
+
+.gb_na svg,
+.gb_Dc svg,
+.gb_0c .gb_2d,
+.gb_Pc .gb_2d {
+  color: #5f6368;
+  opacity: 1;
+}
+
+.gb_Qe button:focus svg,
+.gb_Qe button:hover svg,
+.gb_Qe button:active svg,
+.gb_A:focus,
+.gb_A:hover,
+.gb_A:active,
+.gb_A[aria-expanded="true"] {
+  outline: none;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.gb_yc .gb_Qe.gb_Re button:hover svg,
+.gb_Qe button:hover svg,
+.gb_A:hover {
+  background-color: rgba(60, 64, 67, 0.08);
+}
+
+.gb_z .gb_A,
+.gb_B .gb_z .gb_A {
+  background-position: -64px -29px;
+}
+
+.gb_z .gb_A,
+.gb_z .gb_A:hover,
+.gb_z .gb_A:focus {
+  opacity: 1;
+}
+
+#gb#gb a.gb_A {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
