@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Animated Reactions With Dislike Button</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  
+    html,
+    body {
+      height: 100%;
+    }
+  
+    .wrap {
+      background: #3a5897;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      position: relative;
+    }
+  
+    .rect {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      background-color: white;
+      border-radius: 90px;
+      overflow: hidden;
+      -webkit-animation: rec 0.2s ease-in-out;
+      animation: rec 0.2s ease-in-out;
+      height: 100px;
+      -webkit-box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.1);
+    }
+  
+    @-webkit-keyframes rec {
+      0% {
+        -webkit-transform: translate(0px, 400px);
+        transform: translate(0px, 400px);
+      }
+      100% {
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+      }
+    }
+  
+    @keyframes rec {
+      0% {
+        -webkit-transform: translate(0px, 400px);
+        transform: translate(0px, 400px);
+      }
+      100% {
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+      }
+    }
+  
+    .circle {
+      width: 100px;
+      height: 100px;
+      -webkit-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+      -webkit-animation: emo 0.3s ease-in-out.1s;
+      animation: emo 0.3s ease-in-out.1s;
+    }
+  
+    .circle:hover {
+      -webkit-transform: scale(1.5);
+      transform: scale(1.5);
+      cursor: pointer;
+    }
+  
+    .dislike {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  
+    .dislike:hover {
+      -webkit-transform: scale(1.5) rotate(180deg);
+      transform: scale(1.5) rotate(180deg);
+    }
+  
+    @-webkit-keyframes emo {
+      0% {
+        -webkit-transform: scale(5) translate(0px, -1px);
+        transform: scale(5) translate(0px, 400px);
+      }
+      100% {
+        -webkit-transform: scale(1) translate(0px, 0px);
+        transform: scale(1) translate(0px, 0px);
+      }
+    }
+  
+    @keyframes emo {
+      0% {
+        -webkit-transform: scale(5) translate(0px, -1px);
+        transform: scale(5) translate(0px, 400px);
+      }
+      100% {
+        -webkit-transform: scale(1) translate(0px, 0px);
+        transform: scale(1) translate(0px, 0px);
+      }
+    }
+  
+    .logo {
+      margin-top: -150px;
+      margin-left: -15px;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective(1px) translateZ(0px);
+      transform: perspective(1px) translateZ(0px);
+      -webkit-box-shadow: 0 0 1px transparent;
+      box-shadow: 0 0 1px transparent;
+      height: 100px;
+      position: absolute;
+    }
+  
+    .logo:hover,
+    .logo:focus,
+    .logo:active {
+      -webkit-animation-name: logo;
+      animation-name: logo;
+      -webkit-animation-duration: 0.15s;
+      animation-duration: 0.15s;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      cursor: wait;
+    }
+  
+    @-webkit-keyframes logo {
+      50% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+      }
+      100% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+      }
+    }
+  
+    @keyframes logo {
+      50% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+      }
+      100% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+      }
+    }
+  
+    @media (min-width: 426px) and (max-width: 650px) {
+      .rect {
+        height: 60px;
+      }
+      .circle {
+        height: 60px;
+        width: 60px;
+      }
+      .logo {
+        height: 60px;
+        margin-top: -90px;
+        margin-left: -12px;
+      }
+    }
+  
+    @media screen and (max-width: 425px) {
+      .rect {
+        height: 50px;
+      }
+      .circle {
+        height: 50px;
+        width: 50px;
+      }
+      .logo {
+        height: 50px;
+        margin-top: -80px;
+        margin-left: -10px;
+      }
+    }
+  
+    @media screen and (max-width: 375px) {
+      .rect {
+        height: 50px;
+      }
+      .circle {
+        height: 49px;
+        width: 49px;
+      }
+      .logo {
+        height: 50px;
+        margin-top: -80px;
+        margin-left: -10px;
+      }
+    }
+  
+    @media screen and (max-width: 320px) {
+      .rect {
+        height: 40px;
+      }
+      .circle {
+        height: 40px;
+        width: 40px;
+      }
+      .logo {
+        height: 40px;
+        margin-top: -70px;
+        margin-left: -5px;
+      }
+    }
+  </style>
+</head>
+<body>    
+    <div class="wrap">
+      <div class="rect">
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/rgfnea7od54xj4m/like.gif?raw=1"
+          alt="like"
+          title="Like"
+        />
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/sykc43x39wqxlkz/love.gif?raw=1"
+          alt="love"
+          title="Love"
+        />
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/vdg0a8i0kyd16zk/haha.gif?raw=1"
+          alt="haha"
+          title="Haha"
+        />
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/ydl0fm5kayxz0e5/wow.gif?raw=1"
+          alt="wow"
+          title="Wow"
+        />
+        <img
+          class="btn circle dislike"
+          src="https://www.dropbox.com/s/rgfnea7od54xj4m/like.gif?raw=1"
+          alt=""
+          title="Dislike"
+        />
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/52n5woibt3vrs76/sad.gif?raw=1"
+          alt="sad"
+          title="Sad"
+        />
+        <img
+          class="btn circle"
+          src="https://www.dropbox.com/s/kail2xnglbutusv/angry.gif?raw=1"
+          alt="angry"
+          title="Angry"
+        />
+      </div>
+      <img
+        class="logo"
+        src="https://www.dropbox.com/s/eoqzypv2uh1w4ls/logo.png?raw=1"
+        alt="logo"
+      />
+    </div>
+    <script src="https://unpkg.com/tippy.js@2.1.1/dist/tippy.all.min.js"></script>
+    <script>
+      tippy('.btn', {
+          placement: 'top',
+          animation: 'scale',
+          animateFill: false,
+          duration: 100,
+          flip: false,
+          arrow: false
+      });
+      </script>
+  </body>
+</html>
