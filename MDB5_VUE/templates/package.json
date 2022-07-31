@@ -1,0 +1,51 @@
+{
+  "name": "mdb-vue-dashboards",
+  "version": "1.6.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve --open",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.15.2",
+    "mdb-vue-file-upload": "file:../plugins/mdb-vue-file-upload-1.0.0.tgz",
+    "mdb-vue-table-editor": "file:../plugins/mdb-vue-table-editor-1.0.0.tgz",
+    "mdb-vue-ui-kit": "file:../mdb/mdb-vue-ui-kit-1.7.0.tgz",
+    "vue": "^3.1.5",
+    "vue-router": "^4.0.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
+    "@vue/compiler-sfc": "^3.1.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "sass": "^1.36.0",
+    "sass-loader": "^8.0.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

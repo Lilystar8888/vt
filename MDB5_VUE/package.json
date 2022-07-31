@@ -1,0 +1,76 @@
+{
+  "name": "mdb-vue-app",
+  "version": "2.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve --open",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.15.2",
+    "lodash": "^4.17.21",
+    "mdb-vue-calendar": "file:plugins/mdb-vue-calendar-2.0.0.tgz",
+    "mdb-vue-captcha": "file:plugins/mdb-vue-captcha-1.0.0.tgz",
+    "mdb-vue-color-picker": "file:plugins/mdb-vue-color-picker-1.0.0.tgz",
+    "mdb-vue-cookies": "file:plugins/mdb-vue-cookies-1.0.0.tgz",
+    "mdb-vue-countdown": "file:plugins/mdb-vue-countdown-1.0.0.tgz",
+    "mdb-vue-data-parser": "file:plugins/mdb-vue-data-parser-1.0.0.tgz",
+    "mdb-vue-drag-and-drop": "file:plugins/mdb-vue-drag-and-drop-1.0.1.tgz",
+    "mdb-vue-dummy": "file:plugins/mdb-vue-dummy-1.0.0.tgz",
+    "mdb-vue-ecommerce-gallery": "file:plugins/mdb-vue-ecommerce-gallery-1.0.0.tgz",
+    "mdb-vue-file-upload": "file:plugins/mdb-vue-file-upload-1.0.0.tgz",
+    "mdb-vue-filters": "file:plugins/mdb-vue-filters-1.0.0.tgz",
+    "mdb-vue-input-mask": "file:plugins/mdb-vue-input-mask-1.0.1.tgz",
+    "mdb-vue-mention": "file:plugins/mdb-vue-mention-1.0.0.tgz",
+    "mdb-vue-multi-carousel": "file:plugins/mdb-vue-multi-carousel-1.1.0.tgz",
+    "mdb-vue-onboarding": "file:plugins/mdb-vue-onboarding-1.0.0.tgz",
+    "mdb-vue-organization-chart": "file:plugins/mdb-vue-organization-chart-1.0.0.tgz",
+    "mdb-vue-parallax": "file:plugins/mdb-vue-parallax-1.0.0.tgz",
+    "mdb-vue-scroll-status": "file:plugins/mdb-vue-scroll-status-1.0.0.tgz",
+    "mdb-vue-storage": "file:plugins/mdb-vue-storage-1.0.0.tgz",
+    "mdb-vue-table-editor": "file:plugins/mdb-vue-table-editor-1.0.1.tgz",
+    "mdb-vue-transfer": "file:plugins/mdb-vue-transfer-1.0.0.tgz",
+    "mdb-vue-tree-view": "file:plugins/mdb-vue-tree-view-1.2.1.tgz",
+    "mdb-vue-treetable": "file:plugins/mdb-vue-treetable-1.0.0.tgz",
+    "mdb-vue-ui-kit": "file:mdb/mdb-vue-ui-kit-2.0.0.tgz",
+    "mdb-vue-vector-maps": "file:plugins/mdb-vue-vector-maps-1.1.0.tgz",
+    "mdb-vue-wysiwyg-editor": "file:plugins/mdb-vue-wysiwyg-editor-1.0.0.tgz",
+    "vue": "^3.1.5",
+    "vue-router": "^4.0.10",
+    "vue3-sortable-js": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
+    "@vue/compiler-sfc": "^3.1.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "sass": "^1.36.0",
+    "sass-loader": "^8.0.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
