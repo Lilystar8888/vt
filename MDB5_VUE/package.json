@@ -39,6 +39,7 @@
     "mdb-vue-vector-maps": "file:plugins/mdb-vue-vector-maps-1.1.0.tgz",
     "mdb-vue-wysiwyg-editor": "file:plugins/mdb-vue-wysiwyg-editor-1.0.0.tgz",
     "vue": "^3.1.5",
+    "vue-draggable-next": "^2.1.1",
     "vue-router": "^4.0.10",
     "vue3-sortable-js": "^1.0.0"
   },
@@ -66,7 +67,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",

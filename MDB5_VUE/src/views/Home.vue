@@ -26,6 +26,7 @@ import {
 
 // @ is an alias to /src
 import TableEditor from "@/components/TableEditor.vue";
+import TableDraggable from "@/components/TableDraggable.vue";
 import { apiSplits } from "@/components/data";
 
 export default {
@@ -47,7 +48,8 @@ export default {
     MDBTabPane,
     MDBBtn,
     MDBIcon,
-    TableEditor,
+    //TableEditor,
+    TableDraggable,
     MDBSpinner,
     MDBInput,
   },
@@ -193,7 +195,8 @@ export default {
             :key="split.split_id"
             :tabId="split.split_id"
           >
-            <TableEditor :tabId="split.split_id" />
+            <!--<TableEditor :tabId="split.split_id" />-->
+            <TableDraggable />
           </MDBTabPane>
         </MDBTabContent>
       </MDBTabs>
