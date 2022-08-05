@@ -764,7 +764,7 @@ export default {
       >
         <table class="table">
           <thead v-if="data.columns">
-            <tr>
+            <VueDraggableNext v-model="data.columns" tag="tr">
               <th scope="col" v-if="actionPosition === 'start'">
                 {{ actionHeader }}
               </th>
@@ -811,7 +811,7 @@ export default {
               <th scope="col" v-if="actionPosition === 'end'">
                 {{ actionHeader }}
               </th>
-            </tr>
+            </VueDraggableNext>
           </thead>
           <VueDraggableNext 
             v-if="(data.rows && data.rows.length > 0) || loading"
