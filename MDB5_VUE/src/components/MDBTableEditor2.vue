@@ -795,6 +795,7 @@ export default {
                 :class="(fixedHeader || col.fixed) && 'fixed-cell'"
                 @click="col.sort !== false && sortAndFilter(col.field)"
               >
+                <span>{{ col.label }}</span>
                 <i
                   v-if="col.sort !== false"
                   class="table-editor__sort-icon fas fa-arrow-up"
@@ -806,7 +807,6 @@ export default {
                         : 'rotate(0deg)',
                   }"
                 ></i>
-                {{ col.label }}
               </th>
               <th scope="col" v-if="actionPosition === 'end'">
                 {{ actionHeader }}
