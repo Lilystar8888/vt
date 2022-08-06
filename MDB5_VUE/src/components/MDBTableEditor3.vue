@@ -828,6 +828,7 @@ export default {
                   cursor: col.sort !== false ? 'pointer' : 'default',
                   left: col.fixed && !col.right ? col.left + 'px' : false,
                   right: col.fixed && col.right ? 0 : false,
+                  display: col.visible && col.visible ? 'table-cell': 'none'
                 }"
                 :class="[
                   (fixedHeader || col.fixed) && 'fixed-cell', 
@@ -905,6 +906,7 @@ export default {
                   {
                     left: col.fixed && !col.right ? col.left + 'px' : false,
                     right: col.fixed && col.right ? 0 : false,
+                    display: col.visible && col.visible ? 'table-cell': 'none'
                   },
                 ]"
                 :class="col.fixed && 'fixed-cell'"
@@ -1072,3 +1074,9 @@ export default {
     </MDBModal>
   </component>
 </template>
+
+<style>
+.hidden_columns {
+  display: none;
+}
+</style>

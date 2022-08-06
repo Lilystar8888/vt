@@ -1,9 +1,19 @@
 <script>
 import { ref, watchEffect } from "vue";
-import { MDBInput, MDBBtn, MDBIcon, MDBSelect } from "mdb-vue-ui-kit";
+import {
+  MDBInput, 
+  MDBCheckbox, 
+  MDBBtn,
+  MDBIcon,
+  MDBSelect,
+  MDBModal,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+} from "mdb-vue-ui-kit";
 import MDBTableEditor from "./MDBTableEditor3";
 
-import _ from 'lodash';
+import _ from "lodash";
 import { apiTables } from "./data";
 
 export default {
@@ -12,10 +22,15 @@ export default {
   },
   components: {
     MDBInput,
+    MDBCheckbox,
     MDBSelect,
     MDBBtn,
     MDBIcon,
     MDBTableEditor,
+    MDBModal,
+    MDBModalHeader,
+    MDBModalTitle,
+    MDBModalBody,
   },
   setup(props) {
     const asyncData = ref({
@@ -34,25 +49,26 @@ export default {
         console.log("ytimer");
         const tabId = props.tabId;
         console.log("tabId", tabId);
-        if(tabId && tabId.length>0){
-          const apidata = _.filter(apiTables, o => o.split_id == tabId);
+        if (tabId && tabId.length > 0) {
+          const apidata = _.filter(apiTables, (o) => o.split_id == tabId);
           console.log("apidata", apidata);
-          if (apidata && apidata.length>0) {
+          if (apidata && apidata.length > 0) {
             const splitdata = apidata[0].split_data;
-            if(splitdata){
-              console.log("splitdata", splitdata);
-              asyncData.value = splitdata;
+            if (splitdata) {
+              console.log("splitdata", splitdata); 
+              splitdata.columns = _.map(splitdata.columns, o => _.extend({visible: true}, o));
+              asyncData.value = splitdata; 
               asyncSearchData.value = splitdata;
               loadingAsync.value = true;
               clearTimeout(ytimer);
-            }else{
-            console.log('未獲取splitdata');
+            } else {
+              console.log("未獲取splitdata");
+            }
+          } else {
+            console.log("未獲取apidata");
           }
-          }else{
-            console.log('未獲取apidata');
-          }
-        }else{
-          console.log('未獲取tabId');
+        } else {
+          console.log("未獲取tabId");
         }
       }, 1000);
     };
@@ -75,11 +91,13 @@ export default {
       asyncSearchSelectedCols.value = asyncSearchSelectedValue.value.split(",");
     };
 
-    watchEffect(()=>{
-      if(props.tabId){
+    const TableModal = ref(false);
+
+    watchEffect(() => {
+      if (props.tabId) {
         loadAsyncData();
       }
-    })
+    });
 
     return {
       asyncData,
@@ -93,6 +111,7 @@ export default {
       asyncSearchSelectedCols,
       asyncSearchQueryPhrase,
       searchasync,
+      TableModal
     };
   },
 };
@@ -113,8 +132,22 @@ export default {
         :disabled="asyncSearchEdit"
         multiple
       />
-      <MDBBtn outline="primary" size="sm" class="h-100 ms-3" @click="searchasync">
+      <MDBBtn
+        outline="primary"
+        size="sm"
+        class="h-100 ms-1"
+        @click="searchasync"
+      >
         <MDBIcon icon="search" />
+      </MDBBtn>
+      <MDBBtn
+        outline="primary"
+        size="sm"
+        class="h-100 ms-1"
+        @click="$refs.asyncSearchEditorRef.addRow()"
+        :disabled="asyncSearchEdit"
+      >
+        <MDBIcon icon="plus" />
       </MDBBtn>
     </div>
     <div class="d-inline-flex align-items-center">
@@ -124,23 +157,24 @@ export default {
         class="h-100 ms-1"
         :disabled="asyncSearchEdit"
       >
-        <MDBIcon icon="refresh"/>
+        <MDBIcon icon="refresh" />
       </MDBBtn>
       <MDBBtn
         color="primary"
         size="sm"
-        class="h-100 ms-3"
-        @click="$refs.asyncSearchEditorRef.addRow()"
+        class="h-100 ms-1" 
+        aria-controls="TableModal"
+        @click="TableModal = true"
         :disabled="asyncSearchEdit"
       >
-        <MDBIcon icon="plus"/>
+        <MDBIcon icon="table" />
       </MDBBtn>
     </div>
   </div>
   <hr />
   <MDBTableEditor
-    v-model:dataset="asyncSearchData"
-    :loading="loadingAsync.value"
+    v-model:dataset="asyncSearchData" 
+    :loading="loadingAsync"
     :search="asyncSearchQueryPhrase"
     :searchColumns="asyncSearchSelectedCols"
     :asyncSearchEdit="asyncSearchEdit"
@@ -149,4 +183,24 @@ export default {
     v-model:edit="asyncSearchEdit"
     ref="asyncSearchEditorRef"
   />
+  <MDBModal
+    id="TableModal"
+    tabindex="-1"
+    labelledby="TableModalTitle"
+    v-model="TableModal"
+    centered 
+    scrollable 
+  >
+    <MDBModalHeader>
+      <MDBModalTitle id="TableModalTitle">欄位顯示設定</MDBModalTitle>
+    </MDBModalHeader>
+    <MDBModalBody>
+      <MDBCheckbox 
+        v-for="col in asyncSearchData.columns" 
+        v-model="col.visible"
+        :key="col.field" 
+        :label="col.label" 
+      />
+    </MDBModalBody>
+  </MDBModal>
 </template>
