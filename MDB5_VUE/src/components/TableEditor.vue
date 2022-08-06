@@ -1,7 +1,7 @@
 <script>
 import { ref, watchEffect } from "vue";
 import { MDBInput, MDBBtn, MDBIcon, MDBSelect } from "mdb-vue-ui-kit";
-import MDBTableEditor from "./MDBTableEditor2";
+import MDBTableEditor from "./MDBTableEditor3";
 
 import _ from 'lodash';
 import { apiTables } from "./data";

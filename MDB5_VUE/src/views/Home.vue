@@ -273,6 +273,10 @@ thead, tbody, tfoot, tr, td, th {
   border-width: 0.5px;
 }
 
+thead {
+  user-select: none;
+}
+
 .table-editor__sort-icon {
   position: relative;
 }
