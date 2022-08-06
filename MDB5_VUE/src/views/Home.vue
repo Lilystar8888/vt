@@ -298,4 +298,8 @@ thead {
 .table-editor__sort-icon {
   position: relative;
 }
+
+.table-editor__pagination {
+  border-top: 0px;
+}
 </style>

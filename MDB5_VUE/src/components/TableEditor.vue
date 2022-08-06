@@ -33,15 +33,18 @@ export default {
     MDBModalBody,
   },
   setup(props) {
+
     const asyncData = ref({
       columns: [
-        { label: "Company", field: "company" },
-        { label: "Office", field: "office" },
-        { label: "Employees", field: "employees" },
-        { label: "international", field: "international" },
+        { label: "Company", field: "company", visible: true },
+        { label: "Office", field: "office", visible: true },
+        { label: "Employees", field: "employees", visible: true },
+        { label: "international", field: "international", visible: true },
       ],
       rows: [],
     });
+
+    const asyncEdit = ref(false); //編輯中
 
     const loadingAsync = ref(false);
     const loadAsyncData = () => {
@@ -56,9 +59,9 @@ export default {
             const splitdata = apidata[0].split_data;
             if (splitdata) {
               console.log("splitdata", splitdata); 
-              splitdata.columns = _.map(splitdata.columns, o => _.extend({visible: true}, o));
-              asyncData.value = splitdata; 
-              asyncSearchData.value = splitdata;
+              //splitdata.columns = _.map(splitdata.columns, o => _.extend({visible: true}, o));
+              asyncData.value.rows = splitdata.rows; 
+              asyncSearchData.value = asyncData.value;
               loadingAsync.value = true;
               clearTimeout(ytimer);
             } else {
@@ -75,7 +78,7 @@ export default {
 
     const asyncSearchEditorRef = ref(null);
     const asyncSearchQuery = ref("");
-    const asyncSearchEdit = ref(false);
+    const asyncSearchEdit = ref(false); //搜尋中
     const asyncSearchData = ref(asyncData.value);
     const asyncSearchQueryCols = ref([
       { text: "Company", value: "company" },
@@ -86,9 +89,19 @@ export default {
     const asyncSearchSelectedValue = ref("");
     const asyncSearchQueryPhrase = ref("");
     const asyncSearchSelectedCols = ref([]);
-    const searchasync = () => {
+
+    const searchasync = () => { 
       asyncSearchQueryPhrase.value = asyncSearchQuery.value;
-      asyncSearchSelectedCols.value = asyncSearchSelectedValue.value.split(",");
+      asyncSearchSelectedCols.value = asyncSearchSelectedValue.value.split(","); 
+      asyncSearchEdit.value = true;
+    };
+
+    const searchcancel = () => {
+      asyncSearchQuery.value = "";
+      asyncSearchQueryPhrase.value = "";
+      asyncSearchSelectedCols.value = [];
+      asyncSearchSelectedValue.value = "";
+      asyncSearchEdit.value = false;
     };
 
     const TableModal = ref(false);
@@ -101,6 +114,7 @@ export default {
 
     return {
       asyncData,
+      asyncEdit,
       loadingAsync,
       asyncSearchEditorRef,
       asyncSearchEdit,
@@ -111,6 +125,7 @@ export default {
       asyncSearchSelectedCols,
       asyncSearchQueryPhrase,
       searchasync,
+      searchcancel,
       TableModal
     };
   },
@@ -123,13 +138,13 @@ export default {
       <MDBInput
         v-model="asyncSearchQuery"
         label="Search"
-        :disabled="asyncSearchEdit"
+        :disabled="asyncEdit"
       />
       <div class="px-3 mt-1">in:</div>
       <MDBSelect
         v-model:options="asyncSearchQueryCols"
         v-model:selected="asyncSearchSelectedValue"
-        :disabled="asyncSearchEdit"
+        :disabled="asyncEdit"
         multiple
       />
       <MDBBtn
@@ -140,12 +155,21 @@ export default {
       >
         <MDBIcon icon="search" />
       </MDBBtn>
-      <MDBBtn
+      <MDBBtn 
+        v-if="asyncSearchEdit"
         outline="primary"
         size="sm"
         class="h-100 ms-1"
+        @click="searchcancel"
+      >
+        <MDBIcon icon="close" />
+      </MDBBtn>
+      <MDBBtn
+        color="primary"
+        size="sm"
+        class="h-100 ms-1"
         @click="$refs.asyncSearchEditorRef.addRow()"
-        :disabled="asyncSearchEdit"
+        :disabled="asyncEdit"
       >
         <MDBIcon icon="plus" />
       </MDBBtn>
@@ -155,7 +179,7 @@ export default {
         color="primary"
         size="sm"
         class="h-100 ms-1"
-        :disabled="asyncSearchEdit"
+        :disabled="asyncEdit"
       >
         <MDBIcon icon="refresh" />
       </MDBBtn>
@@ -165,22 +189,20 @@ export default {
         class="h-100 ms-1" 
         aria-controls="TableModal"
         @click="TableModal = true"
-        :disabled="asyncSearchEdit"
+        :disabled="asyncEdit"
       >
         <MDBIcon icon="table" />
       </MDBBtn>
     </div>
   </div>
-  <hr />
   <MDBTableEditor
     v-model:dataset="asyncSearchData" 
+    v-model:edit="asyncEdit"
     :loading="loadingAsync.value"
     :search="asyncSearchQueryPhrase"
     :searchColumns="asyncSearchSelectedCols"
-    :asyncSearchEdit="asyncSearchEdit"
     :entries="5"
     :entriesOptions="[5, 10, 15]"
-    v-model:edit="asyncSearchEdit"
     ref="asyncSearchEditorRef"
   />
   <MDBModal

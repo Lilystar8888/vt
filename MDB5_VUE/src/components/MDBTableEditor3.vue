@@ -801,7 +801,7 @@ export default {
         :wheelPropagation="true"
         style="background-color: inherit"
       >
-        <table class="table">
+        <table :class="['table', data.rows && data.rows.length == 0 && 'w-100']">
           <thead v-if="data.columns">
             <tr>
               <th scope="col" v-if="actionPosition === 'start'">
@@ -946,7 +946,7 @@ export default {
           </VueDraggableNext>
           <tbody v-else>
             <tr>
-              <td>
+              <td :colspan="data.columns?data.columns.length+1:5">
                 {{ noFoundMessage }}
               </td>
             </tr>
