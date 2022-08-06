@@ -1072,9 +1072,3 @@ export default {
     </MDBModal>
   </component>
 </template>
-
-<style scoped>
-  .table>:not(caption)>*>* {
-    border-bottom-width: 0;
-  }
-</style>

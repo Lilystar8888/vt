@@ -52,10 +52,9 @@ export default {
     MDBInput,
   },
   setup() {
-
     const state = reactive({
-      newtabInputName: '',
-    })
+      newtabInputName: "",
+    });
 
     const collapse1 = ref(false);
     const dropdown1 = ref(false);
@@ -80,7 +79,7 @@ export default {
       asyncSplits.value.push({
         split_id: `tab${index}`,
         split_name: ``,
-        split_data: {}
+        split_data: {},
       });
     };
 
@@ -88,7 +87,7 @@ export default {
       loadAsyncSplits();
     });
 
-    return { 
+    return {
       state,
       collapse1,
       dropdown1,
@@ -166,11 +165,7 @@ export default {
                   aria-label="新增分頁"
                   aria-describedby="button-newtab"
                 >
-                  <MDBBtn 
-                    color="white" 
-                    class="m-0 ms-1 shadow-0" 
-                    size="sm"
-                  >
+                  <MDBBtn color="white" class="m-0 ms-1 shadow-0" size="sm">
                     <MDBIcon icon="check" />
                   </MDBBtn>
                 </MDBInput>
@@ -216,7 +211,6 @@ export default {
 </template>
 
 <style>
-
 .nav-tabs > .btn {
   min-width: 40px;
   height: 40px;
@@ -241,7 +235,7 @@ export default {
 }
 
 .nav-tabs .nav-link .btn.btn-white:hover,
-.nav-tabs .nav-link .btn-white:focus, 
+.nav-tabs .nav-link .btn-white:focus,
 .nav-tabs .nav-link .btn-white.focus,
 .nav-tabs .nav-link .btn-white:active,
 .nav-tabs .nav-link .btn-white.active {
@@ -269,7 +263,12 @@ export default {
   box-shadow: none;
 }
 
-thead, tbody, tfoot, tr, td, th {
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
   border-width: 0.5px;
 }
 
@@ -277,14 +276,21 @@ thead {
   user-select: none;
 }
 
+.table {
+  width: auto;
+}
+
+.table > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
+
 .table-editor table th .btn {
   margin: 0;
   padding: 0;
 }
 
-
-.table-editor table th.active, 
-.table-editor table th .btn.active,  
+.table-editor table th.active,
+.table-editor table th .btn.active,
 .table-editor table th .btn.active .table-editor__sort-icon {
   color: var(--mdb-primary);
 }
@@ -292,5 +298,4 @@ thead {
 .table-editor__sort-icon {
   position: relative;
 }
-
 </style>
