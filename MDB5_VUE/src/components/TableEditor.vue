@@ -174,7 +174,7 @@ export default {
   <hr />
   <MDBTableEditor
     v-model:dataset="asyncSearchData" 
-    :loading="loadingAsync"
+    :loading="loadingAsync.value"
     :search="asyncSearchQueryPhrase"
     :searchColumns="asyncSearchSelectedCols"
     :asyncSearchEdit="asyncSearchEdit"
