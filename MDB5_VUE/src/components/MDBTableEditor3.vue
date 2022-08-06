@@ -829,21 +829,28 @@ export default {
                   left: col.fixed && !col.right ? col.left + 'px' : false,
                   right: col.fixed && col.right ? 0 : false,
                 }"
-                :class="(fixedHeader || col.fixed) && 'fixed-cell'"
-                @click="col.sort !== false && sortAndFilter(col.field)"
+                :class="[
+                  (fixedHeader || col.fixed) && 'fixed-cell', 
+                  orderBy && orderKey === col.field && 'active'
+                ]"
               >
-                <span>{{ col.label }}</span>
-                <i
-                  v-if="col.sort !== false"
-                  class="table-editor__sort-icon fas fa-arrow-up"
+                <button 
+                  class = "btn btn-sm shadow-0"
                   :class="orderBy && orderKey === col.field && 'active'"
-                  :style="{
-                    transform:
-                      orderBy === 'desc' && orderKey === col.field
-                        ? 'rotate(180deg)'
-                        : 'rotate(0deg)',
-                  }"
-                ></i>
+                  @click="col.sort !== false && sortAndFilter(col.field)"
+                >
+                  <span>{{ col.label }}</span>
+                  <i
+                    v-if="col.sort !== false"
+                    class="table-editor__sort-icon fas fa-arrow-up"
+                    :style="{
+                      transform:
+                        orderBy === 'desc' && orderKey === col.field
+                          ? 'rotate(180deg)'
+                          : 'rotate(0deg)',
+                    }"
+                  ></i>
+                </button>
               </th>
               <th scope="col" v-if="actionPosition === 'end'">
                 {{ actionHeader }}

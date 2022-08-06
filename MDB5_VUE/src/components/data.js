@@ -6,7 +6,7 @@ export const def_columns = [
   },
   {
     width: 250,
-    sort: false,
+    //sort: false,
     defaultValue: "Warsaw",
     options: ["London", "Warsaw", "New York"],
     inputType: "select",

@@ -277,6 +277,18 @@ thead {
   user-select: none;
 }
 
+.table-editor table th .btn {
+  margin: 0;
+  padding: 0;
+}
+
+
+.table-editor table th.active, 
+.table-editor table th .btn.active,  
+.table-editor table th .btn.active .table-editor__sort-icon {
+  color: var(--mdb-primary);
+}
+
 .table-editor__sort-icon {
   position: relative;
 }
