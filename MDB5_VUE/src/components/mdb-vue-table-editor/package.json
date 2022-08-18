@@ -1,7 +1,0 @@
-{
-  "name": "mdb-vue-table-editor",
-  "version": "1.0.1",
-  "main": "js/mdb-vue-table-editor.umd.min.js",
-  "author": "MDBootstrap",
-  "license": "SEE LICENSE IN <License.pdf>"
-}
